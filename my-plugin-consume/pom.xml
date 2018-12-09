@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.fantj</groupId>
+    <artifactId>my-plugin-consume</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.fantj</groupId>
+                <artifactId>my-plugin-provide</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+                <configuration>
+                    <msg>hello plugin</msg>
+                    <list>
+                        <list>one</list>
+                        <list>two</list>
+                    </list>
+                </configuration>
+
+                <!--在执行package时候自动执行自定义插件 将插件挂到 phase 中 -->
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>fantj</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
